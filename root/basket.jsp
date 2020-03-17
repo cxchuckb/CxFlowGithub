@@ -49,7 +49,7 @@ function decQuantity (prodid) {
 	
 	if (basketId != null) {
 		// Dont need to do anything else
-			
+			//added comment for commit test
 		// Well, apart from checking to see if they've accessed someone elses basket ;)
 
 		//**************************************************
