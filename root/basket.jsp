@@ -57,11 +57,11 @@ function decQuantity (prodid) {
         //Security Fix
         PreparedStatement preparedStatement = con.prepareStatement(sql);
         try {
-         ResultSet rs = stmt.executeQuery("SELECT * FROM Baskets WHERE basketid = " + basketId);
-         String sql = "SELECT * FROM Baskets WHERE basketid =?");
+        ResultSet rs = stmt.executeQuery("SELECT * FROM Baskets WHERE basketid = " + basketId);
+        String sql = "SELECT * FROM Baskets WHERE basketid =?");
         preparedStatement.setString(1, basketId);
         ResetSet rs = preparedStatement.executeQuery();
-		////Statement stmt = conn.createStatement();
+		//Statement stmt = conn.createStatement();
 		//try {
 		//	ResultSet rs = stmt.executeQuery("SELECT * FROM Baskets WHERE basketid = " + basketId);
 		//	rs.next();
