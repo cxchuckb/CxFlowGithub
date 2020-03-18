@@ -36,6 +36,7 @@ function decQuantity (prodid) {
 <h3>Your Basket</h3>
 <%
 	String userid = (String) session.getAttribute("userid");
+	string myid = (string);
 	Cookie[] cookies = request.getCookies();
 	String basketId = null;
 	if (cookies != null) {
