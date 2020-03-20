@@ -36,6 +36,7 @@ function decQuantity (prodid) {
 <h3>Your Basket</h3>
 <%
 	String userid = (String) session.getAttribute("userid");
+	string myid = (string);
 	Cookie[] cookies = request.getCookies();
 	String basketId = null;
 	if (cookies != null) {
@@ -52,22 +53,26 @@ function decQuantity (prodid) {
 			//added comment for commit test
 		// Well, apart from checking to see if they've accessed someone elses basket ;)
 
-		//**************************************************
+//********************* SQLi Fix *****************************
         Statement stmt = conn.createStatement();
-        //Security Fix
         PreparedStatement preparedStatement = con.prepareStatement(sql);
         try {
         ResultSet rs = stmt.executeQuery("SELECT * FROM Baskets WHERE basketid = " + basketId);
         String sql = "SELECT * FROM Baskets WHERE basketid =?");
         preparedStatement.setString(1, basketId);
         ResetSet rs = preparedStatement.executeQuery();
-		//Statement stmt = conn.createStatement();
-		//try {
-		//	ResultSet rs = stmt.executeQuery("SELECT * FROM Baskets WHERE basketid = " + basketId);
-		//	rs.next();
-		//	String bUserId = "" + rs.getInt("userid");
-		//	if ((userid == null && ! bUserId.equals("0")) || (userid != null && userid.equals(bUserId))) {
-		//		conn.createStatement().execute("UPDATE Score SET status = 1 WHERE task = 'OTHER_BASKET'");
+//********************* SQLi Fix *****************************
+
+//********************* SQLi Fault *****************************
+//Statement stmt = conn.createStatement();
+//try {
+//	ResultSet rs = stmt.executeQuery("SELECT * FROM Baskets WHERE basketid = " + basketId);
+//	rs.next();
+//	String bUserId = "" + rs.getInt("userid");
+//	if ((userid == null && ! bUserId.equals("0")) || (userid != null && userid.equals(bUserId))) {
+//		conn.createStatement().execute("UPDATE Score SET status = 1 WHERE task = 'OTHER_BASKET'");
+//********************* SQLi Fault *****************************
+
 			}
 
 		} catch (Exception e) {
